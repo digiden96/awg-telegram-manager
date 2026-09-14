@@ -159,7 +159,8 @@ cp -a "$config_path" "$backup_dir/server.conf"
 install -d -o root -g root -m 0755 /opt/awg-telegram-manager /etc/awg-manager
 cp -a "$project_dir/backend" "$project_dir/openclaw-plugin" "$project_dir/telegram-bot" /opt/awg-telegram-manager/
 find /opt/awg-telegram-manager -type d -exec chmod 0755 {} +
-find /opt/awg-telegram-manager -type f -exec chmod go-w {} +
+find /opt/awg-telegram-manager -type f -exec chmod 0644 {} +
+chown -R root:root /opt/awg-telegram-manager
 install -o root -g root -m 0755 "$project_dir/backend/awg_manager.py" /usr/local/sbin/awg-manager
 install -o root -g root -m 0644 "$project_dir/backend/awg-manager.service" /etc/systemd/system/awg-manager.service
 install -d -m 0755 /etc/systemd/system/awg-manager.service.d

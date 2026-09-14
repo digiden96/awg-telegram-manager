@@ -13,3 +13,9 @@ jobs:
       - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - run: node --check openclaw-plugin/index.mjs && node --check telegram-bot/bot.mjs
       - run: bash -n install.sh && bash -n scripts/install-awg31.sh && bash -n scripts/install-node.sh
+  installer:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f tests/installer.Dockerfile -t awg-installer-test .
+      - run: docker run --rm awg-installer-test
