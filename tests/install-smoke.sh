@@ -42,7 +42,7 @@ else
 fi
 EOF
 chmod 755 /usr/local/bin/{awg,awg-quick,systemctl,curl}
-printf '1\n\n\nexample.com\n\n123456\n123456:TEST_TOKEN\n\nstandalone\nyes\n' | script -qec 'bash /work/install.sh' /dev/null
+python3 /work/tests/drive_install.py
 runuser -u awg-bot -- sudo -n /usr/local/sbin/awg-manager list | jq -e 'length==1 and .[0].exportable==false'
 runuser -u awg-bot -- sudo -n /usr/local/sbin/awg-manager add new-device | jq -e '.name=="new-device" and .exportable==true'
 runuser -u awg-bot -- test -r /opt/awg-telegram-manager/openclaw-plugin/index.mjs
