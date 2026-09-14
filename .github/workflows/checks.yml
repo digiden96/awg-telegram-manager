@@ -15,6 +15,7 @@ jobs:
       - run: bash -n install.sh && bash -n scripts/install-awg31.sh && bash -n scripts/install-node.sh
   installer:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - run: docker build -f tests/installer.Dockerfile -t awg-installer-test .

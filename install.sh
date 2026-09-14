@@ -16,8 +16,8 @@ if [[ ! -f "$project_dir/backend/awg_manager.py" ]]; then
   exit $?
 fi
 
-[[ -t 0 ]] || { echo 'Interactive terminal required. Download install.sh, then run sudo bash install.sh.' >&2; exit 1; }
 [[ ! -e /var/lib/awg-manager/manager.db && ! -e /etc/awg-manager/config.json ]] || { echo 'Manager already installed. Setup refuses to overwrite existing state; see README for upgrades.' >&2; exit 1; }
+[[ -t 0 ]] || { echo 'Interactive terminal required. Download install.sh, then run sudo bash install.sh.' >&2; exit 1; }
 source /etc/os-release
 [[ $ID == ubuntu && $VERSION_ID == 24.04 ]] || { echo 'This release supports Ubuntu 24.04 only.' >&2; exit 1; }
 
