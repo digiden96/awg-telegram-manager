@@ -1,0 +1,8 @@
+{
+  "id": "awg-telegram-manager",
+  "name": "AmneziaWG Telegram Manager",
+  "description": "Button-based peer, quota, schedule and configuration management without model calls.",
+  "activation": {"onStartup": true},
+  "commandAliases": [{"name": "vpn", "kind": "runtime-slash"}],
+  "configSchema": {"type": "object", "additionalProperties": false, "properties": {}}
+}

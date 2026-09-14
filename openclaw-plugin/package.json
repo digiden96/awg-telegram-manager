@@ -1,0 +1,9 @@
+{
+  "name": "openclaw-awg-telegram-manager",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Deterministic Telegram control plane for AmneziaWG 3+ peers",
+  "license": "MIT",
+  "openclaw": {"extensions": ["./index.mjs"]},
+  "engines": {"node": ">=22"}
+}

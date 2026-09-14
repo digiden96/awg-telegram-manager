@@ -1,0 +1,10 @@
+*.db
+*.db-*
+*.conf
+*.json
+!package.json
+!openclaw.plugin.json
+!examples/*.json
+__pycache__/
+*.pyc
+.env

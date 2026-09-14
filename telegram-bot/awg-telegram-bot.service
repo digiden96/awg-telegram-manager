@@ -1,0 +1,23 @@
+[Unit]
+Description=AmneziaWG Telegram management bot
+After=network-online.target awg-manager.service
+Wants=network-online.target
+Requires=awg-manager.service
+
+[Service]
+Type=simple
+User=awg-bot
+Group=awg-manager-bot
+Environment=AWG_MANAGER_TELEGRAM_CONFIG=/etc/awg-manager/telegram.json
+Environment=AWG_MANAGER_PENDING=/var/lib/awg-telegram-bot/pending.json
+StateDirectory=awg-telegram-bot
+ExecStart=/usr/bin/node /opt/awg-telegram-manager/telegram-bot/bot.mjs
+Restart=always
+RestartSec=5
+UMask=0077
+PrivateTmp=true
+ProtectHome=true
+# sudo runs the bounded root helper, which writes AWG config and manager state.
+
+[Install]
+WantedBy=multi-user.target
