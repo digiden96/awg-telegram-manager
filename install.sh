@@ -109,7 +109,7 @@ else
   "$awg_bin" show "$interface_name" peers >/dev/null
   # Only host interfaces are supported. Never adopt a Docker config as a host config.
   server_cidr=$(awk -F= '/^[[:space:]]*Address[[:space:]]*=/{gsub(/[[:space:]]/,"",$2); print $2; exit}' "$config_path")
-  vpn_network=$(python3 -c 'import ipaddress,sys; print(ipaddress.ip_interface(sys.argv[1]).network)' "$server_cidr")
+  vpn_network=$(python3 -c 'import ipaddress,sys; n=ipaddress.ip_interface(sys.argv[1]).network; assert n.version==4 and 16<=n.prefixlen<=29; print(n)' "$server_cidr")
   server_address=${server_cidr%/*}
   listen_port=$(awk -F= '/^[[:space:]]*ListenPort[[:space:]]*=/{gsub(/[[:space:]]/,"",$2); print $2; exit}' "$config_path")
 fi
